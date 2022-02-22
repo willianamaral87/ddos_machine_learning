@@ -1,0 +1,7 @@
+# Verificar flows do switch
+sudo ovs-ofctl -O OpenFlow13 dump-flows <switch>
+sudo ovs-ofctl -O OpenFlow13 dump-flows s1
+
+# Verificar estatísticas das tabelas
+sudo ovs-ofctl -O OpenFlow13 dump-tables <switch>
+sudo ovs-ofctl -O OpenFlow13 dump-tables s1
