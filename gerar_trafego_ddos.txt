@@ -1,0 +1,84 @@
+*** Tráfego normal ***
+*** TCP ***
+Gerar 1 Mbits/sec de tráfego
+h1 iperf -c <IP destino> -m -i 2 -b 1000000
+
+Gerar 10 Mbits/sec de tráfego
+h1 iperf -c <IP destino> -m -i 2 -b 10000000
+
+Gerar 100 Mbits/sec de tráfego
+h1 iperf -c <IP destino> -m -i 2 -b 100000000
+
+Gerar 1 Gbits de tráfego
+h1 iperf -c <IP destino> -m -i 2 -b 1000000000
+
+*** UDP ***
+Gerar 10 Mbits/sec de tráfego:
+h1 iperf -u -c <IP destino> -m -i 2 -b 10000000
+
+Gerar 100 Mbits/sec de tráfego
+h1 iperf -u -c <IP destino> -m -i 2 -b 100000000
+
+Gerar 1 Gbits/sec de tráfego:
+h1 iperf -u -c <IP destino> -m -i 2 -b 1000000000
+
+*** ICMP ***
+ping <IP>
+ou hping3 --icmp <IP destino>
+
+*** SSH ***
+ssh msfadmin@<IP destino>
+
+*** SFTP ***
+
+sftp msfadmin@<IP destino>
+comandos:
+pwd : exibir diretório atual
+get : download de um arquivo
+put : upload de um arquivo
+
+*** FTP  ***
+ftp <IP destino>
+usuário/senha: msfadmin / msfadmin
+Tráfego FTP (sem criptografia):
+ls  : listar
+pwd : exibir diretório atual
+get : download de um arquivo
+
+Resumo
+Tráfego normal
+iperf - gerar tráfego de rede normal
+ssh - acesso remoto
+sftp - transferência de arquivo com criptografia
+ftp - transferência de arquivo sem criptografia
+
+*** Tráfego Anômalo ***
+*** TCP ***
+# Somente portas de origem aleatórias
+hping3 -S -p 80 <IP destino>
+
+# IPs de origem aleatórios e portas de origem aleatórias
+hping3 -S -p 80 <IP destino> --rand-source -d <size of packet>
+
+# IPs de origem aleatórios e portas de origem aleatórias
+hping3 -S -p 80 <IP destino> --rand-source -d <size of packet>
+
+*** UDP ***
+# Somente porta de origem aleatória.
+hping3 --udp -p 200 <IP destino>
+--> O destino responde com ICMP para cada msg enviada.
+
+# Endereço IP de origem aleatório e porta de origem aleatória
+hping3 --udp -p 200 <IP destino> --rand-source
+
+*** ICMP ***
+hping3 --icmp <IP destino> --rand-source
+hping3 --icmp <IP destino> --rand-source --fast
+hping3 --icmp <IP destino> --rand-source --faster
+
+Opções hping3:
+-S  --syn        set SYN flag
+-p  --destport   destination port(default 0) - inc/dec
+--fast      alias for -i u10000 (10 packets for second)
+--faster    alias for -i u1000 (100 packets for second)
+-d size of packet

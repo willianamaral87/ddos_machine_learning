@@ -1,0 +1,34 @@
+Instalação do Mininet (camada de infraestrutura):
+A instalação do Mininet foi feita utilizando os passos citados no link http://mininet.org/download/, utilizando os passos descritos na sessão Native Installation from Source:
+git clone git://github.com/mininet/mininet
+
+cd mininet
+git tag  # list available versions
+git checkout -b mininet-2.3.0 2.3.0  # or whatever version you wish to install
+cd ..
+
+cd mininet/util/
+
+install.sh -s mydir -a para: To install everything (using another directory for build):
+
+Verificar a versão do Mininet: mn --version
+
+--------------------------------------------------------------------------------------------------------------
+
+Instalar o controlador (camada de controle):
+git clone git://github.com/osrg/ryu.git
+cd ryu 
+python ./setup.py install
+
+--------------------------------------------------------------------------------------------------------------
+
+Executar o controlador Ryu:
+ryu-manager l4_switch.py
+
+--------------------------------------------------------------------------------------------------------------
+
+Criar a topologia:
+sudo mn --controller=remote,ip=127.0.0.1 --mac -i 172.16.20.0/24 --topo=tree,depth=2,fanout=2
+
+--------------------------------------------------------------------------------------------------------------
+
