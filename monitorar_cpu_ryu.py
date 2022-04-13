@@ -5,14 +5,20 @@
 
 # O conteudo será salvo em um arquivo de texto e será exibido na tela
 
+# Sugestao de melhoria:
+# - Salvar data / hora e rótulo (ddos ou normal) para criar gráfico
+#   rótulo pode ser utilizado da saída do script do ryu
+
 import psutil 
 import time 
 import sys  
-#get pid of running ryu-manager  
+
+# Obter o pid do ryu-manager  
 pid = psutil.Process(int(sys.argv[1]))
 	
 print('O consumo de CPU será exibido na tela e salvo no arquivo de texto cpu_history_ryu.txt')
 print('O tempo entre cada coleta é de 1 segundo por padrão')
+
 while True: 	
     cpu = pid.cpu_percent()
     print(f'{cpu}')
