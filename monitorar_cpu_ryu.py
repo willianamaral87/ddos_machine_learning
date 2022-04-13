@@ -9,8 +9,13 @@
 # - Salvar data / hora e rótulo (ddos ou normal) para criar gráfico
 #   rótulo pode ser utilizado da saída do script do ryu
 
+# Biblioteca utilizada para recuperar informações sobre processos em execução e utilização do sistema (CPU, memória, discos, rede, sensores).
 import psutil 
-import time 
+
+# Funcao de tempo - controlar o sleep
+import time
+
+# Manipular diferentes partes do Python Runtime Environment. 
 import sys  
 
 # Obter o pid do ryu-manager  
