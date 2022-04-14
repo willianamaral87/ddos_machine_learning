@@ -1,4 +1,4 @@
-*** Tráfego normal ***
+******* Tráfego normal *******
 *** TCP ***
 Gerar 1 Mbits/sec de tráfego
 h1 iperf -c <IP destino> -m -i 2 -b 1000000
@@ -52,7 +52,7 @@ ssh - acesso remoto
 sftp - transferência de arquivo com criptografia
 ftp - transferência de arquivo sem criptografia
 
-*** Tráfego Anômalo ***
+******* Tráfego Anômalo *******
 *** TCP ***
 # Somente portas de origem aleatórias
 hping3 -S -p 80 <IP destino>
@@ -72,6 +72,7 @@ hping3 --udp -p 200 <IP destino>
 hping3 --udp -p 200 <IP destino> --rand-source
 
 *** ICMP ***
+# Endereço IP de origem aleatório
 hping3 --icmp <IP destino> --rand-source
 hping3 --icmp <IP destino> --rand-source --fast
 hping3 --icmp <IP destino> --rand-source --faster
@@ -82,3 +83,33 @@ Opções hping3:
 --fast      alias for -i u10000 (10 packets for second)
 --faster    alias for -i u1000 (100 packets for second)
 -d size of packet
+
+
+# Endereço IP de destino aleatório:
+
+- ping 8.8.8.8
+Sem rota
+
+- Adicionar rota default no host
+h1 route add default gw 10.0.0.4 
+
+- Confirmar se a rota foi adicionada:
+h1 route -n
+
+A saída deve ser semelhante a:
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.0.4        0.0.0.0         UG    0      0        0 h1-eth0
+10.0.0.0        0.0.0.0         255.0.0.0       U     0      0        0 h1-eth0
+
+- ping 8.8.8.8
+Com rota
+
+Parâmetros do scapy:
+ping = IP(dst=RandIP())/ICMP()                             
+srloop(ping, inter=1./100, count= 1)    
+
+ping = IP(dst=RandIP(),ttl=(1,100))/ICMP()                             
+srloop(ping, inter=1./100, count= 1)  
+
+com ttl - é enviado de incio até o fim, sendo um IP destino diferente para cada pkt
+
