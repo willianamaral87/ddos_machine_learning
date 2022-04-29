@@ -113,3 +113,15 @@ srloop(ping, inter=1./100, count= 1)
 
 com ttl - é enviado de incio até o fim, sendo um IP destino diferente para cada pkt
 
+# Gerar endereço MAC de origem aleatório
+ping = Ether(src=RandMAC(), dst="00:00:00:00:00:04",type=2048) / IP(src='10.0.0.1',dst=RandIP())/ICMP()
+
+#  sends with a custom ether() layer
+sendp(ping, inter=1/1000, count=10)                                                                                                                                      
+
+ping.show()
+
+# Alterar MAC origem, IP origem e IP destino
+# O endereço IP de origem precisa ser válido na rede
+ping = Ether(src=RandMAC(), dst="00:00:00:00:00:03",type=2048) / IP(src=RandIP(),dst=RandIP())/ICMP()                                                                    
+sendp(ping, inter=1/1000, count=10)
