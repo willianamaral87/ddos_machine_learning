@@ -33,6 +33,9 @@ Pesquisar por: cat -n feature_extraction.py | grep 'rotulo' e cat -n feature_ext
 
 Para cada arquivo gerado na etapa anterior, é necessário realizar a extração de características.
 
+OBS.: Na fase de predição do tráfego, o rótulo é ignorado. 
+É necessário especificar o rótulo na fase de extração de características
+
 #----------------------------------------------------------------------------------#
 
 Concatenar os arquivos 
