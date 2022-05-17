@@ -2,7 +2,6 @@
 
 ### Criar o dataset
 
-Realizar a coleta dos dados:
 Primeiramente é necessário executar o controlador Ryu para realizar a coleta do tráfego.
 
 O script utilizado é o l4_switch_criar_dataset.py
