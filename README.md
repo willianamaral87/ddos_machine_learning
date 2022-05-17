@@ -12,8 +12,6 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 #### Criar a topologia e gerar o tráfego de rede:
 
-Criar a topologia, ir no host h1 via xterm h1, e rodar os scripts.
-
 - Para tráfego normal ICMP é utilizado o script: script_gerar_trafego_icmp.py. 
 
   A topologia deve conter 510 hosts, utilizar a topologia:
@@ -22,7 +20,9 @@ Criar a topologia, ir no host h1 via xterm h1, e rodar os scripts.
 
 - Para tráfego DDoS ICMP é utilizado o script: script_gerar_trafego_ddos_icmp.py
 
-  Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP
+  Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP.
+
+Para ambos os scripts: ir no host h1, utilizando o comando xterm h1 e rodar os scripts.
 
 #----------------------------------------------------------------------------------#
 
