@@ -14,7 +14,7 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 - Para tráfego normal ICMP: 
 
-  A topologia deve conter 510 hosts, utilizar a topologia:
+  A topologia deve conter no mínimo 510 hosts, é sugerido utilizar a topologia:
 
   sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
   
