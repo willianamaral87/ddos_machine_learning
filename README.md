@@ -20,7 +20,7 @@ Para tráfego normal ICMP é utilizado o script: script_gerar_trafego_icmp.py.
 
 A topologia deve conter 510 hosts, utilizar a topologia:
 
-> sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
+``sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
 
 Pra tráfego DDoS ICMP é utilizado o script: script_gerar_trafego_ddos_icmp.py
 
