@@ -4,9 +4,7 @@
 
 #### Controlador Ryu
 
-Primeiramente é necessário executar o controlador Ryu para realizar a coleta do tráfego.
-
-O script utilizado é o l4_switch_criar_dataset.py.
+Primeiramente é necessário executar o controlador Ryu para realizar a coleta do tráfego. O script utilizado é o l4_switch_criar_dataset.py.
 
 Na linha 80 é necessário informar o nome do arquivo que será criado:
 
