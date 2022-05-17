@@ -17,6 +17,7 @@ Criar a topologia, ir no host h1 via xterm h1, e rodar os scripts.
 Tráfego normal ICMP:
 script_gerar_trafego_icmp.py
 A topologia deve conter 510 hosts
+
 sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
 
 Tráfego DDoS ICMP
