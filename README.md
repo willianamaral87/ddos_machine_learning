@@ -10,7 +10,7 @@ Na linha 80 é necessário informar o nome do arquivo que será criado:
 
 arquivo = open('*nome_do_arquivo.csv*','a')
 
-#### Criar a topologia - gerar o tráfego de rede:
+#### Criar a topologia e gerar o tráfego de rede:
 
 Criar a topologia, ir no host h1 via xterm h1, e rodar os scripts.
 
