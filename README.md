@@ -2,6 +2,8 @@
 
 ### Criar o dataset
 
+#### Controlador Ryu
+
 Primeiramente é necessário executar o controlador Ryu para realizar a coleta do tráfego.
 
 O script utilizado é o l4_switch_criar_dataset.py.
@@ -10,7 +12,8 @@ Na linha 80 é necessário informar o nome do arquivo que será criado:
 
 arquivo = open('nome_do_arquivo.csv','a')
 
-Gerar o tráfego de rede:
+#### Criar a topologia - gerar o tráfego de rede:
+
 Criar a topologia, ir no host h1 via xterm h1, e rodar os scripts.
 
 Tráfego normal ICMP:
