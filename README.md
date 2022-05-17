@@ -1,6 +1,4 @@
-##### Scripts utilizados na dissertação de mestrado #####
-
-##### INSTRUÇÕES #####
+# Instruções de uso dos scripts utilizados na dissertação de mestrado #
 
 Realizar a coleta de tráfego para criar o dataset.
 
