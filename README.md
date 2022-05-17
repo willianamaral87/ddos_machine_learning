@@ -1,6 +1,6 @@
-# Instruções de uso dos scripts utilizados na dissertação de mestrado #
+## Instruções de uso dos scripts ##
 
-Realizar a coleta de tráfego para criar o dataset.
+### Criar o dataset
 
 Realizar a coleta dos dados:
 Primeiramente é necessário executar o controlador Ryu para realizar a coleta do tráfego.
