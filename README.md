@@ -24,7 +24,7 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
   Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP.
   
-  Realizar o comando pingall para realizar o mapeamento ARP.
+  Realizar o comando pingall para realizar o mapeamento ARP (após carregar a topologia)
   
   Executar o script: python3 script_gerar_trafego_ddos_icmp.py para gerar o ataque
   
@@ -32,7 +32,7 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 
 
-Para ambos os scripts: ir no host h1, utilizando o comando xterm h1 e rodar os scripts.
+Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e rodar os scripts.
 
 #----------------------------------------------------------------------------------#
 
