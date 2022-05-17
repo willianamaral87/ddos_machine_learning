@@ -14,7 +14,7 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 - Para tráfego normal ICMP: 
 
-  A topologia deve conter no mínimo 510 hosts, é sugerido utilizar a topologia:
+  A topologia deve conter no mínimo 510 hosts, é sugerido utilizar a topologia (economia computacional):
 
   sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
   
@@ -22,7 +22,9 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 - Para tráfego DDoS ICMP:  
 
-  Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP.
+  Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP. Topologia utilizada:
+  
+  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=3,fanout=2
   
   Realizar o comando pingall para realizar o mapeamento ARP (após carregar a topologia)
   
