@@ -8,7 +8,7 @@ Primeiramente é necessário executar o controlador Ryu para realizar a coleta d
 
 Na linha 80 é necessário informar o nome do arquivo que será criado:
 
-arquivo = open('nome_do_arquivo.csv','a')
+arquivo = open('*nome_do_arquivo.csv*','a')
 
 #### Criar a topologia - gerar o tráfego de rede:
 
