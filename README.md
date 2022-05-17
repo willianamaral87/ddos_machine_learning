@@ -18,13 +18,17 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
   sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
   
-  Utilizar o script: script_gerar_trafego_icmp.py
+  Executar o script: python3 script_gerar_trafego_icmp.py
 
 - Para tráfego DDoS ICMP:  
 
   Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP.
   
-  Utilizar o script: script_gerar_trafego_ddos_icmp.py
+  Realizar o comando pingall para realizar o mapeamento ARP.
+  
+  Executar o script: python3 script_gerar_trafego_ddos_icmp.py para gerar o ataque
+  
+  Após finalizar a coleta, remover as linhas do arquivo adicionadas pelo comando pingall
 
 
 
