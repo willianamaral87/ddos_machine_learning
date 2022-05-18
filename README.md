@@ -64,18 +64,20 @@ OBS.: Na fase de predição do tráfego, o rótulo é ignorado.
 
 #----------------------------------------------------------------------------------#
 
-Concatenar os arquivos 
-Os arquivos gerados na extração de características devem ser concatenados em um único arquivo para criar o dataset final.
+### Criar o dataset - Concatenar os arquivos 
+Os arquivos gerados na fase de Extração de Características devem ser concatenados em um único arquivo para criar o dataset final.
 
-Dependência:
-feature_extraction.py
+
 
 #----------------------------------------------------------------------------------#
 
 Executar a topologia SDN para detecção de tráfego ICMP e DDoS_ICMP
+
 ryu-manager l4_switch_detector_oficial.py
 
 Depende de:
+
 feature_extraction.py
+
 detector_ddos.py
 dataset_final_mod_2.csv
