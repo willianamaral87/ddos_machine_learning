@@ -237,8 +237,8 @@ def f_calc_valores_distintos(l_amostras):
 
 
 # Realizar a extração de caracteristicas
-def f_extracao_caracteristicas(df, dpid, in_port):
-
+def f_extracao_caracteristicas(df, dpid, in_port, label, salvar):
+    
     # Converter tipo de object para datetime
     df['data_hora'] = df['data_hora'].astype('datetime64[ns]')
 
@@ -436,7 +436,8 @@ def f_extracao_caracteristicas(df, dpid, in_port):
                             e_ttl_icmp, e_ttl_tcp, e_ttl_udp,
                             valor_distinto_ttl_icmp, valor_distinto_ttl_tcp, valor_distinto_ttl_udp,
                             ratio_icmp_total, ratio_tcp_total, ratio_udp_total,
-                           ]])
+                            label,
+                            ]])
 
             # Inicio e fim da análise
             dh_inicio = dh_fim
@@ -480,15 +481,19 @@ def f_extracao_caracteristicas(df, dpid, in_port):
                               'e_ttl_icmp', 'e_ttl_tcp', 'e_ttl_udp',
                               'valor_distinto_ttl_icmp', 'valor_distinto_ttl_tcp', 'valor_distinto_ttl_udp',
                               'ratio_icmp_total', 'ratio_tcp_total', 'ratio_udp_total',
-                             ]
+                             'rótulo',
+                              ]
 
         # Remover registros duplicados
         dataset_normal = dataset_result.drop_duplicates()
 #        dataset_normal = dataset_result.copy()
         # Salvar o dataset em disco
-#        dataset_normal.to_csv("dataset_TESTE.csv")
-    
-        return dataset_normal
+        
+        if salvar:
+            dataset_normal.to_csv("dataset_"+ label +".csv")
+            print(dataset_normal)
+        else:
+            return dataset_normal
 
     else:
         return print("ERRO!")
