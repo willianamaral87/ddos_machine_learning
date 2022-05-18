@@ -16,11 +16,13 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'
 
 - Para tráfego normal ICMP: 
 
-  A topologia deve conter no mínimo 510 hosts, é sugerido utilizar a topologia (economia computacional):
+  - A topologia deve conter no mínimo 510 hosts, é sugerido utilizar a topologia (economia computacional):
 
-  sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
+    sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
   
-  Executar o script: python3 script_gerar_trafego_icmp.py
+    Executar o script: python3 script_gerar_trafego_icmp.py
+  
+  - Utilizar o comando pingall com diversas topologias
 
 - Para tráfego DDoS ICMP:  
 
