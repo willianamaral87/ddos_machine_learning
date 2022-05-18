@@ -40,6 +40,8 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para
 
 Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e rodar os scripts.
 
+Obs.: É utilizado o host h1 pois outros scripts já realizam a EC baseado no switch 1 porta 1, porém pode ser alterado.
+
 #--------------------------------------------------------------------------------------------------------------#
 
 ### Criar o dataset - Extração de Características
