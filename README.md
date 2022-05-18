@@ -58,10 +58,7 @@ in_port = 1 # Identificação da porta que foi gerado o tráfego
 
 label = "ICMP" OU "DDoS_ICMP" # Rótulo do Dataset 
 
-Utilizar o script *feature_extraction_criar_dataset.py* para realizar a extração de características de cada arquivo de tráfego coletado.
-
-
-Para cada arquivo gerado na etapa anterior, é necessário realizar a extração de características.
+Para cada arquivo gerado na etapa anterior, é necessário realizar a extração de características, utilizando o script *feature_extraction_criar_dataset.py*.
 
 OBS.: Na fase de predição do tráfego, o rótulo é ignorado. 
 
