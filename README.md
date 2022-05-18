@@ -42,16 +42,12 @@ Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e
 
 ### Criar o dataset - Extração de Características
 
-feature_extraction_criar_dataset.py
+Desenvolvido o script *feature_extraction_criar_dataset.py* para realizar a Extração de Características do tráfego de rede coletado na etapa anterior.
 
-Extração 
-
-# Switch
-dpid = 1
-# Port
-in_port = 1
-
-label = "DDOS_ICMP_TESTE_WILLIAN"
+Alguns dados devem ser alterados no script:
+dpid = 1 # Identificação do switch
+in_port = 1 # Identificação da porta
+label = "ICMP" OU "DDoS_ICMP" # Rótulo do Dataset 
 
 
 Realizar a extração de características
