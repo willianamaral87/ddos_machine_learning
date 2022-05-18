@@ -1,6 +1,6 @@
 ## Instruções de uso dos scripts ##
 
-### Criar o dataset
+### Criar o dataset - coleta de dados
 
 #### Controlador Ryu
 
@@ -39,6 +39,20 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'
 Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e rodar os scripts.
 
 #----------------------------------------------------------------------------------#
+
+### Criar o dataset - Extração de Características
+
+feature_extraction_criar_dataset.py
+
+Extração 
+
+# Switch
+dpid = 1
+# Port
+in_port = 1
+
+label = "DDOS_ICMP_TESTE_WILLIAN"
+
 
 Realizar a extração de características
 Utilizar o script feature_extraction_criar_dataset.py para realizar a conversão de cada arquivo de tráfego coletado.
