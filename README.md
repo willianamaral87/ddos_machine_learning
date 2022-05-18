@@ -46,26 +46,21 @@ Desenvolvido o script *feature_extraction_criar_dataset.py* para realizar a Extr
 
 Alguns dados devem ser alterados no script (conforme cada tipo de tráfego):
 
+Caminho do arquivo de entrada - que será realizado a EC
+
 dpid = 1 # Identificação do switch que foi gerado o tráfego
 
 in_port = 1 # Identificação da porta que foi gerado o tráfego
 
 label = "ICMP" OU "DDoS_ICMP" # Rótulo do Dataset 
 
+Utilizar o script *feature_extraction_criar_dataset.py* para realizar a extração de características de cada arquivo de tráfego coletado.
 
-
-Realizar a extração de características
-Utilizar o script feature_extraction_criar_dataset.py para realizar a conversão de cada arquivo de tráfego coletado.
-
-Informar no  “feature_extraction_criar_dataset.py” o nome do arquivo que será realizado a extração de característica.
-
-O nome do rótulo também deve ser informado no arquivo feature_extraction.py nas linhas 439 e 484. 
-Pesquisar por: cat -n feature_extraction.py | grep 'rotulo' e cat -n feature_extraction.py | grep 'rótulo'
 
 Para cada arquivo gerado na etapa anterior, é necessário realizar a extração de características.
 
 OBS.: Na fase de predição do tráfego, o rótulo é ignorado. 
-É necessário especificar o rótulo na fase de extração de características
+
 
 #----------------------------------------------------------------------------------#
 
