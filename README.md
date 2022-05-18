@@ -10,7 +10,7 @@ Na linha 80 é necessário informar o nome do arquivo que será criado:
 
 arquivo = open('*nome_do_arquivo.csv*','a')
 
-Se não alterado, o nome padrão é 'coleta_trafego.csv'
+Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para cada tipo de coleta.
 
 #### Criar a topologia e gerar o tráfego de rede:
 
