@@ -72,7 +72,6 @@ Utilizar o script: *concatenar_arquivos.py*
 
 Os dataset gerados na etapa de EC devem ser informados neste script, assim como o nome do dataset final que será gerado.
 
-
 #--------------------------------------------------------------------------------------------------------------#
 
 ### Detecção de tráfego no controlador Ryu
@@ -88,3 +87,16 @@ Depende de:
 - detector_ddos.py
 
 - dataset que será realizado no treinado / predição
+
+#--------------------------------------------------------------------------------------------------------------#
+
+#### Tráfego normal ICMP
+
+pingall
+
+ping <ip>
+
+#### Tráfego DDoS ICMP
+
+scapy
+
