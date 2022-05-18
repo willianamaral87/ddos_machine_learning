@@ -98,12 +98,9 @@ ping <ip>
 
 #### Tráfego DDoS ICMP
 
-scapy
-
-Opções:
+Utilizar scapy com opções:
   - RandMAC() : gerar MAC aleatório
   - RandIP()  : gerar IP aleatório
   
 pkt_ping = Ether(src=src_mac, dst=dst_mac)/IP(src=src_ip, dst=dst_ip)/ICMP()
-
 sendp(pkt_ping, inter=t, count = pkt)
