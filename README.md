@@ -82,8 +82,8 @@ ryu-manager l4_switch_detector_oficial.py
 
 Depende de:
 
-feature_extraction.py
+- feature_extraction.py
 
-detector_ddos.py
+- detector_ddos.py
 
-dataset_final_mod_2.csv
+- dataset_final_mod_2.csv
