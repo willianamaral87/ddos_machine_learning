@@ -38,7 +38,7 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'
 
 Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e rodar os scripts.
 
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------------------------------#
 
 ### Criar o dataset - Extração de Características
 
@@ -62,14 +62,17 @@ Para cada arquivo gerado na etapa anterior, é necessário realizar a extração
 OBS.: Na fase de predição do tráfego, o rótulo é ignorado. 
 
 
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------------------------------#
 
 ### Criar o dataset - Concatenar os arquivos 
 Os arquivos gerados na fase de Extração de Características devem ser concatenados em um único arquivo para criar o dataset final.
 
+Utilizar o script: *concatenar_arquivos.py*
+
+Os dataset gerados na etapa de EC devem ser informados neste script, assim como o nome do dataset final que será gerado.
 
 
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------------------------------#
 
 Executar a topologia SDN para detecção de tráfego ICMP e DDoS_ICMP
 
