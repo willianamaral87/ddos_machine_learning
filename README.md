@@ -10,6 +10,8 @@ Na linha 80 é necessário informar o nome do arquivo que será criado:
 
 arquivo = open('*nome_do_arquivo.csv*','a')
 
+Se não alterado, o nome padrão é 'coleta_trafego.csv'
+
 #### Criar a topologia e gerar o tráfego de rede:
 
 - Para tráfego normal ICMP: 
