@@ -44,7 +44,7 @@ Obs.: É utilizado o host h1 pois outros scripts já realizam a EC baseado no sw
 
 #--------------------------------------------------------------------------------------------------------------#
 
-### Criar o dataset - Extração de Características
+#### Criar o dataset - Extração de Características
 
 Desenvolvido o script *feature_extraction_criar_dataset.py* para realizar a Extração de Características do tráfego de rede coletado na etapa anterior.
 
@@ -65,7 +65,7 @@ OBS.: Na fase de predição do tráfego, o rótulo é ignorado.
 
 #--------------------------------------------------------------------------------------------------------------#
 
-### Criar o dataset - Concatenar os arquivos 
+#### Criar o dataset - Concatenar os arquivos 
 Os arquivos gerados na fase de Extração de Características devem ser concatenados em um único arquivo para criar o dataset final.
 
 Utilizar o script: *concatenar_arquivos.py*
