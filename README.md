@@ -44,7 +44,7 @@ Para ambos os scripts: após carregar a topologia, utilizar o comando xterm h1 e
 
 Desenvolvido o script *feature_extraction_criar_dataset.py* para realizar a Extração de Características do tráfego de rede coletado na etapa anterior.
 
-Alguns dados devem ser alterados no script:
+Alguns dados devem ser alterados no script (conforme cada tipo de tráfego):
 
 dpid = 1 # Identificação do switch que foi gerado o tráfego
 
