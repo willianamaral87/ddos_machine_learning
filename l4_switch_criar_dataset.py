@@ -53,13 +53,13 @@ class SimpleSwitch13(app_manager.RyuApp):
     def myfunction(self):
         self.logger.info("")
         #seg = 1
-        print(f'Carregando SO...')
+        print(f'Carregando NOS...')
         hub.sleep(15)
-        print('iniciando a coleta...')
+        print('A coleta do tráfego de rede foi iniciada.\nO tráfego de rede já pode ser gerado...')
         seg = 0
         while True:
             
-            self.logger.info("Tempo de coleta - %d", seg)
+            self.logger.info("Tempo de coleta - %d segundo (s)", seg)
             seg = seg + 30
 
             if lista_global:
@@ -77,7 +77,7 @@ class SimpleSwitch13(app_manager.RyuApp):
                 lista_global.clear()
 
                 # Salvar o tráfego coletado em um arquivo
-                arquivo = open('coleta_trafego_teste.csv','a')
+                arquivo = open('coleta_ddos_icmp.csv','a')
                 arquivo.writelines(string)
                 arquivo.close()
             hub.sleep(30)
@@ -156,10 +156,8 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         # Capturar data e hora do pacote recebido
         now = datetime.now()
-        ###data_hora = (str(now.year)+'-'+str(now.month)+'-'+str(now.day) + ' ' + str(now.hour)+':'+str(now.minute)+':'+str(now.second))
-
         data_hora = datetime.now()
-
+        
 
         # learn a mac address to avoid FLOOD next time.
         self.mac_to_port[dpid][src] = in_port
@@ -183,7 +181,8 @@ class SimpleSwitch13(app_manager.RyuApp):
                 protocol = ip.proto
 
                 origem = 'sw'+str(dpid) + '-p' + str(in_port)
-
+                
+#                print(f'PROTOCOLO: {protocol}')
 
                 ######################
 
@@ -199,11 +198,6 @@ class SimpleSwitch13(app_manager.RyuApp):
                     
                     # Verificar pacote único - não repetido
                     pkt_recebido = src + '-' + dst + '-' + srcip + '-' + dstip +'-' + str(protocol)
-
-#                    print(f'icmp type : {i.type}')
-#                    print(f'icmp code: {i.code}')
-
-#                    print(f'icmp data: {i.data}')
 
                 #  if TCP Protocol
                 elif protocol == in_proto.IPPROTO_TCP:
@@ -261,13 +255,6 @@ class SimpleSwitch13(app_manager.RyuApp):
                 else:
                     self.add_flow(datapath, priority, match, actions)
         data = None
-
-        # Verificar se corresponde a um pacote contendo ICMP, TCP ou UDP
-##        if cada_pacote:
-##            #print(f'-->>> {cada_pacote}')
-##            lista_global.append(cada_pacote)
-
-
 
 
         if msg.buffer_id == ofproto.OFP_NO_BUFFER:

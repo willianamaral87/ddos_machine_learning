@@ -81,7 +81,7 @@ def f_teste(df_ec, dpid, in_port):
 #-#    print(df_ec)
 
     # Módulo de Extração de Características
-    fe = feature_extraction.f_extracao_caracteristicas(df_ec, dpid, in_port)
+    fe = feature_extraction.f_extracao_caracteristicas(df_ec, dpid, in_port, "rótulo", False)
 #-#    print(f'Dataset com Extração de Características: ')
 #-#    print(fe)
 
@@ -93,7 +93,7 @@ def f_teste(df_ec, dpid, in_port):
 
     print(f'RESULTADO MACHINE LEARNING: {result_ml}')
 
-    if 'DDOS_ICMP' in result_ml:
+    if 'DDoS_ICMP' in result_ml:
         print(f'ATAQUE DETECTADO NO SWITCH {dpid} PORTA {in_port}')
         regra = 'alterada'
         return regra
