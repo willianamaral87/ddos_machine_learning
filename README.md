@@ -74,6 +74,8 @@ Os dataset gerados na etapa de EC devem ser informados neste script, assim como 
 
 #--------------------------------------------------------------------------------------------------------------#
 
+### Detecção de tráfego no controlador Ryu
+
 Executar a topologia SDN para detecção de tráfego ICMP e DDoS_ICMP
 
 ryu-manager l4_switch_detector_oficial.py
@@ -83,4 +85,5 @@ Depende de:
 feature_extraction.py
 
 detector_ddos.py
+
 dataset_final_mod_2.csv
