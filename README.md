@@ -87,4 +87,4 @@ Depende de:
 
 - detector_ddos.py
 
-- dataset_final_mod_2.csv
+- dataset que será realizado no treinado / predição
