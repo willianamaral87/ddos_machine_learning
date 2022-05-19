@@ -28,7 +28,7 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para
 
   Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP. Topologia utilizada:
   
-  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=3,fanout=2
+  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=2,fanout=2
   
   Realizar o comando pingall para realizar o mapeamento ARP (após carregar a topologia)
   
