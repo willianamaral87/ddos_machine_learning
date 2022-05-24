@@ -25,10 +25,22 @@ python ./setup.py install
 Executar o controlador Ryu:
 ryu-manager l4_switch.py
 
+Atual:
+ryu-manager l4_switch_detector_oficial.py
+
 --------------------------------------------------------------------------------------------------------------
 
 Criar a topologia:
 sudo mn --controller=remote,ip=127.0.0.1 --mac -i 172.16.20.0/24 --topo=tree,depth=2,fanout=2
 
+Atual:
+sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=tree,depth=2,fanout=2 --switch=ovs --nat --ipbase=172.16.20.0/23
+
 --------------------------------------------------------------------------------------------------------------
 
+Scapy:
+
+scapy3:
+pkt_ping = Ether(src=RandMAC(), dst="00:00:00:00:00:04")/IP(src=RandIP(), dst="172.16.20.4")/ICMP()
+
+sendp(pkt_ping, inter=tempo, count =q_pacotes  )
