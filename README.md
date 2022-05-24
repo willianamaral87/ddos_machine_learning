@@ -28,7 +28,7 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para
 
   Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP. Topologia utilizada:
   
-  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=3,fanout=2
+  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=2,fanout=2
   
   Realizar o comando pingall para realizar o mapeamento ARP (após carregar a topologia)
   
@@ -44,7 +44,7 @@ Obs.: É utilizado o host h1 pois outros scripts já realizam a EC baseado no sw
 
 #--------------------------------------------------------------------------------------------------------------#
 
-### Criar o dataset - Extração de Características
+#### Criar o dataset - Extração de Características
 
 Desenvolvido o script *feature_extraction_criar_dataset.py* para realizar a Extração de Características do tráfego de rede coletado na etapa anterior.
 
@@ -65,13 +65,12 @@ OBS.: Na fase de predição do tráfego, o rótulo é ignorado.
 
 #--------------------------------------------------------------------------------------------------------------#
 
-### Criar o dataset - Concatenar os arquivos 
+#### Criar o dataset - Concatenar os arquivos 
 Os arquivos gerados na fase de Extração de Características devem ser concatenados em um único arquivo para criar o dataset final.
 
 Utilizar o script: *concatenar_arquivos.py*
 
 Os dataset gerados na etapa de EC devem ser informados neste script, assim como o nome do dataset final que será gerado.
-
 
 #--------------------------------------------------------------------------------------------------------------#
 
@@ -88,3 +87,21 @@ Depende de:
 - detector_ddos.py
 
 - dataset que será realizado no treinado / predição
+
+#--------------------------------------------------------------------------------------------------------------#
+
+#### Gerar tráfego normal ICMP
+
+pingall
+
+ping <ip>
+
+#### Tráfego DDoS ICMP
+
+Utilizar scapy com opções:
+  - RandMAC() : gerar MAC aleatório
+  - RandIP()  : gerar IP aleatório
+  
+pkt_ping = Ether(src=src_mac, dst=dst_mac)/IP(src=src_ip, dst=dst_ip)/ICMP()
+  
+sendp(pkt_ping, inter=intervalo_entre_pacotes, count = qde_pacotes)
