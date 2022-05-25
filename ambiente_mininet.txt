@@ -36,6 +36,9 @@ sudo mn --controller=remote,ip=127.0.0.1 --mac -i 172.16.20.0/24 --topo=tree,dep
 Atual:
 sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=tree,depth=2,fanout=2 --switch=ovs --nat --ipbase=172.16.20.0/23
 
+Com alteração de largura de banda e delay:
+sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=tree,depth=2,fanout=2 --switch=ovs --nat --ipbase=172.16.20.0/23 --link tc,bw=10,delay=10ms
+
 --------------------------------------------------------------------------------------------------------------
 
 Scapy:
@@ -43,4 +46,107 @@ Scapy:
 scapy3:
 pkt_ping = Ether(src=RandMAC(), dst="00:00:00:00:00:04")/IP(src=RandIP(), dst="172.16.20.4")/ICMP()
 
-sendp(pkt_ping, inter=tempo, count =q_pacotes  )
+sendp(pkt_ping, inter=tempo, count =q_pacotes)
+
+--------------------------------------------------------------------------------------------------------------
+
+Comandos Open Virtual Switch
+
+Verificar a versão do OVS:
+ovs-vswitchd --version
+
+# verificar os flows filtrando por tabela
+sudo ovs-ofctl dump-flows s1 table=0
+sudo ovs-ofctl -O OpenFlow13 dump-flows s1 table=0
+
+# Limpar todo os flows da tabela
+sudo ovs-ofctl del-flows s1 
+
+# Regra especifica por porta:
+sudo ovs-ofctl del-flows s2 in_port=1
+
+#### Adicionando fluxos
+# Direcionar os fluxos para a controller
+sudo ovs-ofctl add-flow s1 priority=0,actions=CONTROLLER:65535
+
+#### Drop pacotes ####
+- MAC de origem:
+sudo ovs-ofctl add-flow s1 dl_src=03:00:00:00:00:00,actions=dro
+
+- MAC de destino:
+sudo ovs-ofctl add-flow s1 dl_dst=03:00:00:00:00:00,actions=drop
+
+- Porta de origem: # utilizar este 
+sudo ovs-ofctl add-flow s1 in_port=1,actions=drop
+
+
+############### CONSIDERAR ESTES NA PROGRAMACAO ###############
+# Verificar o tráfego
+sudo ovs-ofctl dump-flows s2
+ 
+# Drop na porta:
+sudo ovs-ofctl add-flow s2 in_port=1,actions=drop
+
+# Remover o drop na porta:
+sudo ovs-ofctl del-flows s2 in_port=1
+
+##############################################################
+
+principais componentes da arquitetura do OVS são:
+ovs-vswitchd – a execução de um programa em background (daemon) que implementa o switch, e em conjunto com o módulo do kernel Linux faz a
+comutação baseada em fluxo.
+ovsdb-server - um servidor de banco de dados para armazenar informações de configuração do ovs-vswitchd.
+ovs-dpctl – uma ferramenta para configurar o módulo de comutação do kernel.
+ovs-vsctl – uma ferramenta para requisitar e atualizar a configuração do ovsvswitchd.
+ovs-appctl – uma aplicativo que envia comandos para daemons do OpenvSwitch.
+
+--------------------------------------------------------------------------------------------------------------
+
+# Subir link
+link sw porta up
+link s2 h1 up
+
+# Subir down
+link s2 h1 down
+
+--------------------------------------------------------------------------------------------------------------
+
+Display Mininet CLI commands:
+mininet> help
+
+Display nodes:
+mininet> nodes
+
+Display links:
+mininet> net
+
+Dump information about all nodes:
+mininet> dump
+
+--------------------------------------------------------------------------------------------------------------
+
+Verificar comandos em e salvar:
+
+h1 ip add sh
+
+h1 ifconfig  -a
+
+s1 ip add sh
+
+s1 ifconfig -a
+
+Note that only the network is virtualized; each host process sees the same set of processes and directories. For example, print the process list from a host process:
+mininet> h1 ps -a
+
+This should be the exact same as that seen by the root network namespace:
+mininet> s1 ps -a
+
+If Mininet crashes for some reason, clean it up:
+cleanup
+sudo mn -c
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+
