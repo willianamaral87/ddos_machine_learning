@@ -62,21 +62,21 @@ sudo ovs-ofctl -O OpenFlow13 dump-flows s1 table=0
 # Limpar todo os flows da tabela
 sudo ovs-ofctl del-flows s1 
 
-# Deletar uma regra especifica por porta:
+# Regra especifica por porta:
 sudo ovs-ofctl del-flows s2 in_port=1
 
 #### Adicionando fluxos
-# Direcionar os fluxos para a controller - regra default
+# Direcionar os fluxos para a controller
 sudo ovs-ofctl add-flow s1 priority=0,actions=CONTROLLER:65535
 
 #### Drop pacotes ####
-- MAC de origem - drop com MAC especifico na origem
-sudo ovs-ofctl add-flow s1 dl_src=03:00:00:00:00:00,actions=drop
+- MAC de origem:
+sudo ovs-ofctl add-flow s1 dl_src=03:00:00:00:00:00,actions=dro
 
-- MAC de destino - drop com MAC especifico no destino
+- MAC de destino:
 sudo ovs-ofctl add-flow s1 dl_dst=03:00:00:00:00:00,actions=drop
 
-- Porta de origem - drom na porta de origem
+- Porta de origem: # utilizar este 
 sudo ovs-ofctl add-flow s1 in_port=1,actions=drop
 
 ###### Rodar comandos do OVS direto no Mininet:
@@ -87,7 +87,7 @@ mininet> sh ovs-ofctl dump-flows s2
 # Verificar os flows
 mininet> sh sudo ovs-ofctl del-flows s2
 
-# Adicionar os flows manualmente - comunicação direta
+# Adicionar os flows manualmente
 Primeiro sentido:
 sh ovs-ofctl add-flow s1 priority=500,in_port=1,actions=output:2
 Segundo sentido:
@@ -103,48 +103,10 @@ mininet> sh sudo ovs-ofctl del-flows s2 --strict
 sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:2
 sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:1
 
-########################## ARP ################################
 # Regra para cobrir broadcast
-# Enviar o pacote para todas as portas - menos a porta que recebeu o pacote
-# Habilitar o ARP
-
-sh ovs-ofctl add-flow s2 dl_type=0x806,nw_proto=1,actions=flood
-###############################################################
-
-# Um /24 falar com outro /24
-sh ovs-ofctl add-flow s2 priority=500,dl_type=0x800,nw_src=172.16.20.0/23,nw_dst=172.16.20.0/23,actions=normal
-
-# Alterar DSCP value:
-mininet> sh ovs-ofctl add-flow s2 priority=800,ip,nw_src=172.16.20.1,actions=mod_nw_tos:184,normal
-
-# Forçar ARP utilizando o IP para o destino em uma porta:
-sh ovs-ofctl add-flow s2 arp,nw_dst=172.16.20.2,actions=output:2
-sh ovs-ofctl add-flow s2 arp,nw_dst=172.16.20.1,actions=output:1
-
-##################### TESTES OK #####################
-### Baseado em MAC:
-sh ovs-ofctl add-flow s2 icmp,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:2
-sh ovs-ofctl add-flow s2 icmp,dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:1
-
-# Adicionar o ARP:
 sh ovs-ofctl add-flow s2 dl_type=0x806,nw_proto=1,actions=flood
 
-### Baseado em MAC e IP
-sh ovs-ofctl add-flow s2 icmp,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,nw_src=172.16.20.1,nw_dst=172.16.20.2,actions=output:2
-sh ovs-ofctl add-flow s2 icmp,dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,nw_src=172.16.20.2,nw_dst=172.16.20.1,actions=output:1
 
-# Adicionar o ARP:
-sh ovs-ofctl add-flow s2 dl_type=0x806,nw_proto=1,actions=flood
-
-# TCP:
-subir o web server:
-mininet> h2 python -m SimpleHTTPServer 80 &
-mininet> h1 curl h2
-
-# Algumas referências dos comandos:
-https://hackmd.io/@pmanzoni/SyWm3n0HH
-
-# Baseado em ICMP, TCP e UDP: Utilizar o protocolo no comando
 
 ############### CONSIDERAR ESTES NA PROGRAMACAO ###############
 # Verificar o tráfego
