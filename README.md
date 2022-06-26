@@ -31,7 +31,7 @@ ryu-manager l4_switch_criar_dataset.py
 
   Pode ser utilizado qualquer topologia para gerar o ataque DDoS ICMP. Topologia utilizada:
   
-  sudo mn --controller=remote,ip=127.0.0.1 --mac  --topo=tree,depth=2,fanout=2
+  sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,4 --switch=ovs
   
   Realizar o comando pingall para realizar o mapeamento ARP (após carregar a topologia)
   
