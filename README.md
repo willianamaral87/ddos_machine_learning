@@ -111,5 +111,5 @@ pkt_ping = Ether(src=src_mac, dst=dst_mac)/IP(src=src_ip, dst=dst_ip)/ICMP()
   
 sendp(pkt_ping, inter=intervalo_entre_pacotes, count = qde_pacotes)
 
-# No momento utilizar somente o IP de origem ou destino aleatório em DDoS Ataque - verificar os MACs
-# Terminar a programação dos MACs para reconhecer os MACs no detector
+No momento utilizar somente o IP de origem ou destino aleatório em DDoS Ataque - verificar os MACs
+Terminar a programação dos MACs para reconhecer os MACs no detector
