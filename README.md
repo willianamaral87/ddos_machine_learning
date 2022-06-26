@@ -91,6 +91,8 @@ Depende de:
 
 - dataset que será realizado no treinado / predição
 
+Topologia: sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=tree,depth=3,fanout=2 --switch=ovs --nat --ipbase=172.16.20.0/23
+
 #--------------------------------------------------------------------------------------------------------------#
 
 #### Gerar tráfego normal ICMP
@@ -108,3 +110,5 @@ Utilizar scapy com opções:
 pkt_ping = Ether(src=src_mac, dst=dst_mac)/IP(src=src_ip, dst=dst_ip)/ICMP()
   
 sendp(pkt_ping, inter=intervalo_entre_pacotes, count = qde_pacotes)
+
+#No momento utilizar somente o IP de destino aleatório em DDoS Ataque - verificar os outros
