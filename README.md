@@ -12,6 +12,9 @@ arquivo = open('*nome_do_arquivo.csv*','a')
 
 Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para cada tipo de coleta.
 
+Executar Ryu (criar o dataset): 
+ryu-manager l4_switch_criar_dataset.py
+
 #### Criar a topologia e gerar o tráfego de rede:
 
 - Para tráfego normal ICMP: 
@@ -20,7 +23,7 @@ Se não alterado, o nome padrão é 'coleta_trafego.csv'. Deve ser alterado para
 
     sudo mn --controller=remote,ip=127.0.0.1 --mac --topo=single,510
   
-    Executar o script: python3 script_gerar_trafego_icmp.py
+    Executar o script: python3 script_gerar_trafego_icmp.py no host 1 (origem)
   
   - Utilizar o comando pingall com diversas topologias
 
